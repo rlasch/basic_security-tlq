@@ -56,9 +56,10 @@ bash 'ssh hardening' do
   EOC
 end
 
-bash 'ssh restarting' do
-  user 'root'
-  code "restart ssh"
+service 'ssh' do
+  provider Chef::Provider::Service::Upstart
+  action :restart
+end
 end
 
 # now allow SSH traffic through the firewall and restart SSH
