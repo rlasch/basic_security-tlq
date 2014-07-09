@@ -56,8 +56,9 @@ bash 'ssh hardening' do
   EOC
 end
 
-service 'ssh' do
-  action :restart
+bash 'ssh restarting' do
+  user 'root'
+  code "restart ssh"
 end
 
 # now allow SSH traffic through the firewall and restart SSH
